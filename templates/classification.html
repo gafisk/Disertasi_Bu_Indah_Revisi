@@ -71,49 +71,6 @@
       <div class="container" data-aos="fade" data-aos-delay="100">
         <form id="predictionForm" action="{{ url_for('classification') }}" method="post">
           <div class="row gy-4">
-            <!-- SOAL 1 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b11" class="form-label flex-grow-1 d-flex align-items-center">Apakah status perkawinan Anda
-                saat ini pada saat pengisian
-                test skrining faktor risiko kanker serviks ini?
-              </label>
-              <select class="form-control" required id="b11" name="b11">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">Belum Menikah/Tidak Menikah</option>
-                <option value="1">Menikah, Bercerai</option>
-              </select>
-            </div>
-
-            <!-- SOAL 2 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b12" class="form-label flex-grow-1 d-flex align-items-center">Berapakah jumlah pernikahan yang
-                pernah dijalani oleh Anda
-                sampai saat pengisian tes skrining faktor risiko kanker
-                serviks ini?</label>
-              <select class="form-control" required id="b12" name="b12">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">Belum pernah menikah/Tidak menikah</option>
-                <option value="1">Pernah menikah 1 kali atau lebih</option>
-              </select>
-            </div>
-
-            <!-- SOAL 3 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b14" class="form-label flex-grow-1 d-flex align-items-center">Apakah Anda pernah memiliki
-                pasangan seksual/suami lebih dari
-                satu dalam waktu yang bersamaan?</label>
-              <select class="form-control" required id="b14" name="b14">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Tidak pernah/belum menikah/tidak menikah/tidak punya
-                  pasangan seksual
-                </option>
-                <option value="1">
-                  Pernah memiliki lebih dari satu pasangan seksual/suami dalam
-                  waktu bersamaan
-                </option>
-              </select>
-            </div>
 
             <!-- SOAL 4 -->
             <div class="mb-3 d-flex flex-column h-100">
@@ -136,45 +93,12 @@
             <!-- SOAL 5 -->
             <div class="mb-3 d-flex flex-column h-100">
               <label for="b22" class="form-label flex-grow-1 d-flex align-items-center">Selama ini sepengetahuan anda,
-                suami anda telah menikah berapa
-                kali</label>
+                suami anda telah menikah
+                berapa kali</label>
               <select class="form-control" required id="b22" name="b22">
                 <option value="">--Pilih Jawaban--</option>
                 <option value="0">Menikah 0 atau 1 kali</option>
                 <option value="1">Menikah ≥ 1 kali</option>
-              </select>
-            </div>
-
-            <!-- SOAL 6 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b23" class="form-label flex-grow-1 d-flex align-items-center">Apakah riwayat status pernikahan
-                suami Anda sebelumnya?.
-                Apakah suami/pasangan seksual anda pernah menjadi duda
-                sebelum menikah dengan Anda</label>
-              <select class="form-control" required id="b23" name="b23">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Tidak pernah menjadi duda / belum menikah / tidak menikah
-                </option>
-                <option value="1">Pernah menjadi duda</option>
-              </select>
-            </div>
-
-            <!-- SOAL 7 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b24" class="form-label flex-grow-1 d-flex align-items-center">Apakah pasangan/suami Anda
-                mempunyai pasangan seksual dalam
-                waktu yang bersamaan selama dalam pernikahan?</label>
-              <select class="form-control" required id="b24" name="b24">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Suami tidak memiliki pasangan seksual/istri lain dalam waktu
-                  yang bersamaan selama dalam pernikahan
-                </option>
-                <option value="1">
-                  Suami memiliki pasangan seksual/istri lain dalam waktu yang
-                  bersamaan selama dalam pernikahan
-                </option>
               </select>
             </div>
 
@@ -262,32 +186,6 @@
               </select>
             </div>
 
-            <!-- SOAL 13 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b52" class="form-label flex-grow-1 d-flex align-items-center">Berapa kali Anda pernah hamil
-                selama ini?</label>
-              <select class="form-control" required id="b52" name="b52">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Belum pernah hamil atau hamil 1-2 kali
-                </option>
-                <option value="1">Pernah hamil ≥ 3 kali</option>
-              </select>
-            </div>
-
-            <!-- SOAL 14 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b53" class="form-label flex-grow-1 d-flex align-items-center">Berapa kali Anda pernah
-                melahirkan selama ini?</label>
-              <select class="form-control" required id="b53" name="b53">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Belum pernah melahirkan / melahirkan 1-2 kali
-                </option>
-                <option value="1">Pernah melahirkan ≥ 3 kali</option>
-              </select>
-            </div>
-
             <!-- SOAL 15 -->
             <div class="mb-3 d-flex flex-column h-100">
               <label for="b54" class="form-label flex-grow-1 d-flex align-items-center">Bagaimana cara Anda melahirkan
@@ -318,22 +216,6 @@
               </select>
             </div>
 
-            <!-- SOAL 17 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b57" class="form-label flex-grow-1 d-flex align-items-center">Apakah Anda pernah mengalami
-                kehamilan abnormal seperti
-                molahidatidosa (hamil anggur) atau KET?</label>
-              <select class="form-control" required id="b57" name="b57">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Tidak pernah mengalami molahidatidosa maupun KET
-                </option>
-                <option value="1">
-                  Pernah mengalami molahidatidosa dan/atau KET ≥ 1 kali
-                </option>
-              </select>
-            </div>
-
             <!-- SOAL 18 -->
             <div class="mb-3 d-flex flex-column h-100">
               <label for="c25" class="form-label flex-grow-1 d-flex align-items-center">Apakah Anda pernah tinggal di
@@ -352,26 +234,6 @@
                   Pernah tinggal atau bekerja di lingkungan dengan salah satu
                   atau lebih paparan tersebut (asap pabrik, limbah pabrik,
                   pupuk/pestisida, asap kendaraan)
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 19 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="c44" class="form-label flex-grow-1 d-flex align-items-center">Apa dan bagaimanakah kondisi
-                sumber air yang digunakan dalam
-                kebutuhan sehari-hari baik untuk, mandi, cebok, mencuci baju,
-                mencuci peralatan dapur (peralatan makan dan minum), untuk
-                memasak atau minum?</label>
-              <select class="form-control" required id="c44" name="c44">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Menggunakan air PDAM, air isi ulang, air sumur, atau mata
-                  air jernih tidak berbau
-                </option>
-                <option value="1">
-                  Menggunakan air sungai keruh/berbau/tercemar, air sumur
-                  keruh dan berbau, mata air tidak jernih.
                 </option>
               </select>
             </div>
@@ -464,8 +326,8 @@
               <select class="form-control" required id="d24" name="d24">
                 <option value="">--Pilih Jawaban--</option>
                 <option value="0">
-                  Menggunakan alat kontrasepsi dalam rahim (IUD) selama ≥
-                  5 tahun tanpa kontrol atau pergantian.
+                  Menggunakan alat kontrasepsi dalam rahim (IUD) selama ≥ 5
+                  tahun tanpa kontrol atau pergantian.
                 </option>
                 <option value="1">
                   Tidak menggunakan alat kontrasepsi dalam rahim (IUD)/
@@ -505,24 +367,6 @@
               </select>
             </div>
 
-            <!-- SOAL 27 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="d53" class="form-label flex-grow-1 d-flex align-items-center">Berapa kali Anda mengkonsumsi
-                makanan yang mengandung
-                pewarna, pengawet, dan penyedap atau makanan yang dihangatkan
-                berkali kali dalam kehidupan sehari-hari?</label>
-              <select class="form-control" required id="d53" name="d53">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Hampir tidak pernah/sama sekali tidak mengonsumsi
-                </option>
-                <option value="1">
-                  Konsumsi rutin/kadang-kadang (sekali sebulan atau lebih
-                  sering)
-                </option>
-              </select>
-            </div>
-
             <!-- SOAL 28 -->
             <div class="mb-3 d-flex flex-column h-100">
               <label for="d93" class="form-label flex-grow-1 d-flex align-items-center">Apakah Anda pernah mengalami
@@ -539,26 +383,6 @@
                 <option value="1">
                   Pernah mengalami gatal atau keputihan abnormal (pada waktu
                   kapan pun)
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 29 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="d94" class="form-label flex-grow-1 d-flex align-items-center">Apakah pasangan seksual atau
-                suami Anda pernah mengalami
-                gejala infeksi pada alat kelamin (misalnya: gatal, luka,
-                keluar cairan tidak normal, nyeri saat buang air kecil, bintil
-                bernanah atau berdarah)?</label>
-              <select class="form-control" required id="d94" name="d94">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Tidak pernah mengalami gejala infeksi pada alat kelamin
-                  (pada waktu kapan pun)
-                </option>
-                <option value="1">
-                  Pernah mengalami gejala infeksi pada alat kelamin (pada
-                  waktu kapan pun)
                 </option>
               </select>
             </div>
@@ -584,15 +408,18 @@
             <!-- SOAL 31 -->
             <div class="mb-3 d-flex flex-column h-100">
               <label for="d116" class="form-label flex-grow-1 d-flex align-items-center">Berapa sering Anda terpapar
-                asap rokok dalam kegiatan sehari-hari?</label>
+                asap rokok dalam kegiatan
+                sehari-hari?</label>
               <select class="form-control" required id="d116" name="d116">
                 <option value="">--Pilih Jawaban--</option>
                 <option value="0">
-                  Tidak pernah menghirup/terpapar asap rokok dalam kegiatan sehari-hari.
+                  Tidak pernah menghirup/terpapar asap rokok dalam kegiatan
+                  sehari-hari.
                 </option>
                 <option value="1">
-                  Terpapar asap rokok dalam intensitas hampir setiap hari/beberapa kali seminggu/sekali sebulan atau
-                  tidak yakin akan frekuensi paparannya.
+                  Terpapar asap rokok dalam intensitas hampir setiap
+                  hari/beberapa kali seminggu/sekali sebulan atau tidak yakin
+                  akan frekuensi paparannya.
                 </option>
               </select>
             </div>
