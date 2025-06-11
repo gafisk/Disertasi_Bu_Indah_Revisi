@@ -1,498 +1,614 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Deteksi Risiko Kanker Serviks</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Deteksi Risiko Kanker Serviks</title>
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
+    <!-- Favicons -->
+    <link
+      href="{{ url_for('static', filename='assets/img/favicon.png') }}"
+      rel="icon"
+    />
+    <link
+      href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}"
+      rel="apple-touch-icon"
+    />
 
-  <!-- Favicons -->
-  <link href="{{ url_for('static', filename='assets/img/favicon.png') }}" rel="icon" />
-  <link href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect" />
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
+    <!-- Vendor CSS Files -->
+    <link
+      href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}"
+      rel="stylesheet"
+    />
 
-  <!-- Vendor CSS Files -->
-  <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-  <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet" />
-  <link href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet" />
-  <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet" />
-  <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet" />
+    <!-- Main CSS File -->
+    <link
+      href="{{ url_for('static', filename='assets/css/main.css') }}"
+      rel="stylesheet"
+    />
 
-  <!-- Main CSS File -->
-  <link href="{{ url_for('static', filename='assets/css/main.css') }}" rel="stylesheet" />
+    <style>
+      label,
+      select {
+        text-transform: capitalize;
+      }
+    </style>
+  </head>
 
-  <style>
-    label,
-    select {
-      text-transform: capitalize;
-    }
-  </style>
-</head>
+  <body class="index-page">
+    <header id="header" class="header d-flex align-items-center sticky-top">
+      <div
+        class="container position-relative d-flex align-items-center justify-content-between"
+      >
+        <a
+          href="{{ url_for('index') }}"
+          class="logo d-flex align-items-center me-auto me-xl-0"
+        >
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <h1 class="sitename">CerviCheck</h1>
+        </a>
 
-<body class="index-page">
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container position-relative d-flex align-items-center justify-content-between">
-      <a href="{{ url_for('index') }}" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">CerviCheck</h1>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="{{ url_for('index') }}">Home</a></li>
-          <li>
-            <a href="{{ url_for('classification') }}" class="active">Classification</a>
-          </li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main">
-    <!-- Contact Section -->
-    <section id="contact" class="contact section light-background">
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Check Risiko Kanker Serviks</h2>
-        <p>Pertanyaan Unggulan</p>
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li>
+              <a href="{{ url_for('classification') }}" class="active"
+                >Classification</a
+              >
+            </li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
       </div>
-      <!-- End Section Title -->
+    </header>
 
-      <div class="container" data-aos="fade" data-aos-delay="100">
-        <form id="predictionForm" action="{{ url_for('classification') }}" method="post">
-          <div class="row gy-4">
+    <main class="main">
+      <!-- Contact Section -->
+      <section id="contact" class="contact section light-background">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Check Risiko Kanker Serviks</h2>
+          <p>Pertanyaan Unggulan</p>
+        </div>
+        <!-- End Section Title -->
 
-            <!-- SOAL 4 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b15" class="form-label flex-grow-1 d-flex align-items-center text-capitalize">Berapakah jumlah
-                pasangan seksual atau suami yang Anda miliki
-                secara bersamaan?</label>
-              <select class="form-control" required id="b15" name="b15">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Tidak memiliki pasangan seksual / belum menikah / tidak
-                  menikah
-                </option>
-                <option value="1">
-                  Memiliki 1 atau lebih pasangan seksual/suami secara
-                  bersamaan
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 5 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b22" class="form-label flex-grow-1 d-flex align-items-center">Selama ini sepengetahuan anda,
-                suami anda telah menikah
-                berapa kali</label>
-              <select class="form-control" required id="b22" name="b22">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">Menikah 0 atau 1 kali</option>
-                <option value="1">Menikah ≥ 1 kali</option>
-              </select>
-            </div>
-
-            <!-- SOAL 8 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b25" class="form-label flex-grow-1 d-flex align-items-center">Berapakah jumlah pasangan
-                seksual atau istri yang diketahui
-                oleh Anda yang dimiliki oleh suami Anda secara bersamaan
-                selama masa pernikahan?</label>
-              <select class="form-control" required id="b25" name="b25">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Suami/pasangan hanya memiliki 1 pasangan seksual/istri
-                </option>
-                <option value="1">
-                  Suami/pasangan memiliki Lebih >1 pasangan seksual/istri lain
-                  secara bersamaan
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 9 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b33" class="form-label flex-grow-1 d-flex align-items-center">Apakah jenis pekerjaan Anda?
-              </label>
-              <select class="form-control" required id="b33" name="b33">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Tidak bekerja / bekerja di luar sektor berisiko tinggi
-                  (Pabrik rokok, pabrik kulit, pabrik cat, dray clean, buruh
-                  tani, tani, buruh kebun, pekebun, sopir, pelaut, pekerja
-                  seks komersial).
-                </option>
-                <option value="1">
-                  Bekerja di sektor berisiko tinggi (Pabrik rokok, pabrik
-                  kulit, pabrik cat, dray clean, buruh tani, tani, buruh
-                  kebun, pekebun, sopir, pelaut, pekerja seks komersial).
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 10 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b32" class="form-label flex-grow-1 d-flex align-items-center">Berapa lama kerja Anda selama
-                aktif dan atau sampai berhenti
-                bekerja
-              </label>
-              <select class="form-control" required id="b32" name="b32">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">Tidak bekerja / bekerja ≤ 11 tahun</option>
-                <option value="1">Pernah bekerja > 11 tahun</option>
-              </select>
-            </div>
-
-            <!-- SOAL 11 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b43" class="form-label flex-grow-1 d-flex align-items-center">Apakah jenis pekerjaan suami
-                Anda?</label>
-              <select class="form-control" required id="b43" name="b43">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Tidak bekerja/bekerja di luar sektor berisiko tinggi (Pabrik
-                  rokok, pabrik kulit, pabrik cat, dray clean, buruh tani,
-                  tani, buruh kebun, pekebun, sopir, pelaut)
-                </option>
-                <option value="1">
-                  Bekerja di sektor berisiko tinggi (Pabrik rokok, pabrik
-                  kulit, pabrik cat, dray clean, buruh tani, tani, buruh
-                  kebun, pekebun, sopir, pelaut)
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 12 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b42" class="form-label flex-grow-1 d-flex align-items-center">Berapa lamakah suami telah
-                bekerja selama ini? saat aktif dan
-                atau sampai berhenti bekerja?</label>
-              <select class="form-control" required id="b42" name="b42">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Suami Tidak bekerja / bekerja ≤ 11 tahun
-                </option>
-                <option value="1">Suami Pernah bekerja > 11 tahun</option>
-              </select>
-            </div>
-
-            <!-- SOAL 15 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b54" class="form-label flex-grow-1 d-flex align-items-center">Bagaimana cara Anda melahirkan
-                sema ini? Atau cara melahirkan
-                yang paling sering dialami?</label>
-              <select class="form-control" required id="b54" name="b54">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Persalinan spontan belakang kepala/persalinan normal tanpa
-                  tindakan
-                </option>
-                <option value="1">
-                  Persalinan dengan tindakan (Forcep, Vakum) atau SC
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 16 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="b55" class="form-label flex-grow-1 d-flex align-items-center">Apakah Anda pernah pengalaman
-                keguguran selama ini?</label>
-              <select class="form-control" required id="b55" name="b55">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">Tidak pernah keguguran</option>
-                <option value="1">
-                  Pernah keguguran (1 kali atau lebih)
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 18 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="c25" class="form-label flex-grow-1 d-flex align-items-center">Apakah Anda pernah tinggal di
-                lingkungan rumah dan lingkungan
-                kerja yang seperti berikut ini? (Terdapat Paparan asap pabrik,
-                atau paparan air limbah buangan pabrik, atau paparan
-                pupuk/obat sawah, lading atau kebun, atau paparan asap
-                kendaraan bermotor)?</label>
-              <select class="form-control" required id="c25" name="c25">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Tidak pernah tinggal atau bekerja di lingkungan dengan
-                  paparan tersebut
-                </option>
-                <option value="1">
-                  Pernah tinggal atau bekerja di lingkungan dengan salah satu
-                  atau lebih paparan tersebut (asap pabrik, limbah pabrik,
-                  pupuk/pestisida, asap kendaraan)
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 20 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="c54" class="form-label flex-grow-1 d-flex align-items-center">Apakah Anda pernah kontak
-                langsung atau tidak langsung dengan
-                pestisida dalam aktivitas sehari-hari, seperti menyemprot,
-                menghirup, menyimpan, atau bersentuhan dengan benda yang
-                mengandung pestisida?</label>
-              <select class="form-control" required id="c54" name="c54">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Tidak pernah kontak atau tidak merasa pernah kontak dengan
-                  pestisida dalam aktivitas sehari-hari
-                </option>
-                <option value="1">
-                  Tidak pernah kontak atau tidak merasa pernah kontak dengan
-                  pestisida dalam aktivitas sehari-hari. Pernah kontak dengan
-                  pestisida, baik secara langsung (menyemprot, mengolah,
-                  menghirup) maupun tidak langsung (mencuci pakaian yang
-                  terpapar, berada di dekat area yang disemprot, menyimpan
-                  pestisida, menggunakan produk rumah tangga berbahan
-                  pestisida)
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 21 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="c63" class="form-label flex-grow-1 d-flex align-items-center">Bahan bakar apa yang digunakan
-                oleh Anda untuk memasak
-                sehari-hari dan sejauh mana asap hasil pembakarannya menyebar
-                di rumah atau terhirup?</label>
-              <select class="form-control" required id="c63" name="c63">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Menggunakan bahan bakar bersih seperti LPG, gas alam, atau
-                  kompor listrik dan asap tidak menyebar ke ruangan lain dan
-                  tidak terhirup oleh Anda
-                </option>
-                <option value="1">
-                  Menggunakan bahan bakar seperti kayu bakar, arang, minyak
-                  tanah, atau biogas dan/atau asap menyebar ke ruangan lain
-                  dan/atau terhirup oleh Anda
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 22 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="d13" class="form-label flex-grow-1 d-flex align-items-center">Apakah Anda memiliki asuransi
-                dan apakah asuransi tersebut
-                digunakan untuk skrining kanker serviks?</label>
-              <select class="form-control" required id="d13" name="d13">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Memiliki asuransi dan digunakan untuk skrining kanker
-                  serviks
-                </option>
-                <option value="1">
-                  Tidak memiliki asuransi atau memiliki tetapi tidak digunakan
-                  untuk skrining kanker serviks
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 23 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="d14" class="form-label flex-grow-1 d-flex align-items-center">Apakah Anda menggunakan
-                kontrasepsi suntik hormonal (1
-                bulan/3 bulan) selama ≥ 3 tahun secara terus-menerus tanpa
-                pernah berganti metode kontrasepsi?</label>
-              <select class="form-control" required id="d14" name="d14">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Tidak menggunakan suntik hormonal/suntik < 3 tahun/pernah berganti metode </option>
-                <option value="1">
-                  Menggunakan KB Suntik hormonal ≥ 3 tahun tanpa ganti metode
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 24 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="d24" class="form-label flex-grow-1 d-flex align-items-center">Apakah Anda menggunakan alat
-                kontrasepsi dalam rahim (IUD)
-                selama ≥ 5 tahun tanpa kontrol atau pergantian?</label>
-              <select class="form-control" required id="d24" name="d24">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Menggunakan alat kontrasepsi dalam rahim (IUD) selama ≥ 5
-                  tahun tanpa kontrol atau pergantian.
-                </option>
-                <option value="1">
-                  Tidak menggunakan alat kontrasepsi dalam rahim (IUD)/
-                  menggunakan < 5 tahun dan Kontrol </option>
-              </select>
-            </div>
-
-            <!-- SOAL 25 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="d28" class="form-label flex-grow-1 d-flex align-items-center">Apakah Anda menggunakan kondom
-                sebagai metode kontrasepsi
-                yang juga berfungsi untuk mencegah penularan infeksi menular
-                seksual dan HPV?</label>
-              <select class="form-control" required id="d28" name="d28">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Menggunakan kondom secara konsisten sebagai kontrasepsi
-                </option>
-                <option value="1">Tidak menggunakan kondom</option>
-              </select>
-            </div>
-
-            <!-- SOAL 26 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="d29" class="form-label flex-grow-1 d-flex align-items-center">Berapa kali Anda mengkonsumsi
-                makanan cepat saji dalam
-                kehidupan sehari-hari?</label>
-              <select class="form-control" required id="d29" name="d29">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Hampir tidak pernah/sama sekali tidak mengonsumsi
-                </option>
-                <option value="1">
-                  Konsumsi rutin/kadang-kadang (sekali sebulan atau lebih
-                  sering)
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 28 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="d93" class="form-label flex-grow-1 d-flex align-items-center">Apakah Anda pernah mengalami
-                gejala infeksi seperti gatal
-                atau keputihan abnormal (keputihan berwarna kuning keruh,
-                hijau, gatal, berbau, bintil-bintil bernanah atau
-                berdarah)?</label>
-              <select class="form-control" required id="d93" name="d93">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Tidak pernah mengalami gatal atau keputihan abnormal (pada
-                  waktu kapan pun)
-                </option>
-                <option value="1">
-                  Pernah mengalami gatal atau keputihan abnormal (pada waktu
-                  kapan pun)
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 30 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="d95" class="form-label flex-grow-1 d-flex align-items-center">Apakah anda terpapar asap rokok
-                oleh pasangan, keluarga,
-                orang serumah, dan mereka merokok baik di rumah dan/atau di
-                luar rumah?</label>
-              <select class="form-control" required id="d95" name="d95">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Tidak terpapar dari siapa pun atau di mana pun
-                </option>
-                <option value="1">
-                  Terpapar asap rokok dari pasangan/keluarga/di rumah/luar
-                  rumah/tidak yakin
-                </option>
-              </select>
-            </div>
-
-            <!-- SOAL 31 -->
-            <div class="mb-3 d-flex flex-column h-100">
-              <label for="d116" class="form-label flex-grow-1 d-flex align-items-center">Berapa sering Anda terpapar
-                asap rokok dalam kegiatan
-                sehari-hari?</label>
-              <select class="form-control" required id="d116" name="d116">
-                <option value="">--Pilih Jawaban--</option>
-                <option value="0">
-                  Tidak pernah menghirup/terpapar asap rokok dalam kegiatan
-                  sehari-hari.
-                </option>
-                <option value="1">
-                  Terpapar asap rokok dalam intensitas hampir setiap
-                  hari/beberapa kali seminggu/sekali sebulan atau tidak yakin
-                  akan frekuensi paparannya.
-                </option>
-              </select>
-            </div>
-
-            <div class="mb-3">
-              <button class="btn btn-primary w-100" id="submitButton" type="submit">
-                Prediksi
-              </button>
-            </div>
-          </div>
-        </form>
-
-        <!-- Modal -->
-        <!-- Modal -->
-        <div class="modal fade" id="prediksiModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel">Hasil Prediksi</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="container" data-aos="fade" data-aos-delay="100">
+          <form
+            id="predictionForm"
+            action="{{ url_for('classification') }}"
+            method="post"
+          >
+            <div class="row gy-4">
+              <!-- SOAL 4 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="b15"
+                  class="form-label flex-grow-1 d-flex align-items-center text-capitalize"
+                  >Berapakah jumlah pasangan seksual atau suami yang Anda miliki
+                  secara bersamaan?</label
+                >
+                <select class="form-control" required id="b15" name="b15">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Tidak memiliki pasangan seksual / belum menikah / tidak
+                    menikah
+                  </option>
+                  <option value="1">
+                    Memiliki 1 atau lebih pasangan seksual/suami secara
+                    bersamaan
+                  </option>
+                </select>
               </div>
-              <div class="modal-body">
-                {% if error %}
-                <h3 class="text-danger">{{ error }}</h3>
-                {% elif form_values %}
-                <h3>
-                  Prediksi Risiko:
-                  <span class="text-danger">{{ prediction }}</span>
-                </h3>
-                {% else %}
-                <p>Tidak ada input yang diterima.</p>
-                {% endif %}
+
+              <!-- SOAL 5 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="b22"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Selama ini sepengetahuan anda, suami anda telah menikah
+                  berapa kali</label
+                >
+                <select class="form-control" required id="b22" name="b22">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">Menikah 0 atau 1 kali</option>
+                  <option value="1">Menikah ≥ 1 kali</option>
+                </select>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                  Tutup
+
+              <!-- SOAL 8 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="b25"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Berapakah jumlah pasangan seksual atau istri yang diketahui
+                  oleh Anda yang dimiliki oleh suami Anda secara bersamaan
+                  selama masa pernikahan?</label
+                >
+                <select class="form-control" required id="b25" name="b25">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Suami/pasangan hanya memiliki 1 pasangan seksual/istri
+                  </option>
+                  <option value="1">
+                    Suami/pasangan memiliki Lebih >1 pasangan seksual/istri lain
+                    secara bersamaan
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 9 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="b33"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Apakah jenis pekerjaan Anda?
+                </label>
+                <select class="form-control" required id="b33" name="b33">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Tidak bekerja / bekerja di luar sektor berisiko tinggi
+                    (Pabrik rokok, pabrik kulit, pabrik cat, dray clean, buruh
+                    tani, tani, buruh kebun, pekebun, sopir, pelaut, pekerja
+                    seks komersial).
+                  </option>
+                  <option value="1">
+                    Bekerja di sektor berisiko tinggi (Pabrik rokok, pabrik
+                    kulit, pabrik cat, dray clean, buruh tani, tani, buruh
+                    kebun, pekebun, sopir, pelaut, pekerja seks komersial).
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 10 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="b32"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Berapa lama kerja Anda selama aktif dan atau sampai berhenti
+                  bekerja
+                </label>
+                <select class="form-control" required id="b32" name="b32">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">Tidak bekerja / bekerja ≤ 11 tahun</option>
+                  <option value="1">Pernah bekerja > 11 tahun</option>
+                </select>
+              </div>
+
+              <!-- SOAL 11 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="b43"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Apakah jenis pekerjaan suami Anda?</label
+                >
+                <select class="form-control" required id="b43" name="b43">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Tidak bekerja/bekerja di luar sektor berisiko tinggi (Pabrik
+                    rokok, pabrik kulit, pabrik cat, dray clean, buruh tani,
+                    tani, buruh kebun, pekebun, sopir, pelaut)
+                  </option>
+                  <option value="1">
+                    Bekerja di sektor berisiko tinggi (Pabrik rokok, pabrik
+                    kulit, pabrik cat, dray clean, buruh tani, tani, buruh
+                    kebun, pekebun, sopir, pelaut)
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 12 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="b42"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Berapa lamakah suami telah bekerja selama ini? saat aktif dan
+                  atau sampai berhenti bekerja?</label
+                >
+                <select class="form-control" required id="b42" name="b42">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Suami Tidak bekerja / bekerja ≤ 11 tahun
+                  </option>
+                  <option value="1">Suami Pernah bekerja > 11 tahun</option>
+                </select>
+              </div>
+
+              <!-- SOAL 15 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="b54"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Bagaimana cara Anda melahirkan selama ini? Atau cara
+                  melahirkan yang paling sering dialami?</label
+                >
+                <select class="form-control" required id="b54" name="b54">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Persalinan spontan belakang kepala/persalinan normal tanpa
+                    tindakan
+                  </option>
+                  <option value="1">
+                    Persalinan dengan tindakan (Forcep, Vakum) atau SC
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 16 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="b55"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Apakah Anda pernah pengalaman keguguran selama ini?</label
+                >
+                <select class="form-control" required id="b55" name="b55">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">Tidak pernah keguguran</option>
+                  <option value="1">
+                    Pernah keguguran (1 kali atau lebih)
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 18 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="c25"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Apakah Anda pernah tinggal di lingkungan rumah dan lingkungan
+                  kerja yang seperti berikut ini? (Terdapat Paparan asap pabrik,
+                  atau paparan air limbah buangan pabrik, atau paparan
+                  pupuk/obat sawah, lading atau kebun, atau paparan asap
+                  kendaraan bermotor)?</label
+                >
+                <select class="form-control" required id="c25" name="c25">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Tidak pernah tinggal atau bekerja di lingkungan dengan
+                    paparan tersebut
+                  </option>
+                  <option value="1">
+                    Pernah tinggal atau bekerja di lingkungan dengan salah satu
+                    atau lebih paparan tersebut (asap pabrik, limbah pabrik,
+                    pupuk/pestisida, asap kendaraan)
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 20 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="c54"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Apakah Anda pernah kontak langsung atau tidak langsung dengan
+                  pestisida dalam aktivitas sehari-hari, seperti menyemprot,
+                  menghirup, menyimpan, atau bersentuhan dengan benda yang
+                  mengandung pestisida?</label
+                >
+                <select class="form-control" required id="c54" name="c54">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Tidak pernah kontak atau tidak merasa pernah kontak dengan
+                    pestisida dalam aktivitas sehari-hari
+                  </option>
+                  <option value="1">
+                    Pernah kontak dengan pestisida, baik secara langsung
+                    (menyemprot, mengolah, menghirup) maupun tidak langsung
+                    (mencuci pakaian yang terpapar, berada di dekat area yang
+                    disemprot, menyimpan pestisida, menggunakan produk rumah
+                    tangga berbahan pestisida)
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 21 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="c63"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Bahan bakar apa yang digunakan oleh Anda untuk memasak
+                  sehari-hari dan sejauh mana asap hasil pembakarannya menyebar
+                  di rumah atau terhirup?</label
+                >
+                <select class="form-control" required id="c63" name="c63">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Menggunakan bahan bakar bersih seperti LPG, gas alam, atau
+                    kompor listrik dan asap tidak menyebar ke ruangan lain dan
+                    tidak terhirup oleh Anda
+                  </option>
+                  <option value="1">
+                    Menggunakan bahan bakar seperti kayu bakar, arang, minyak
+                    tanah, atau biogas dan/atau asap menyebar ke ruangan lain
+                    dan/atau terhirup oleh Anda
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 22 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="d13"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Apakah Anda memiliki asuransi dan apakah asuransi tersebut
+                  digunakan untuk skrining kanker serviks?</label
+                >
+                <select class="form-control" required id="d13" name="d13">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Memiliki asuransi dan digunakan untuk skrining kanker
+                    serviks
+                  </option>
+                  <option value="1">
+                    Tidak memiliki asuransi atau memiliki tetapi tidak digunakan
+                    untuk skrining kanker serviks
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 23 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="d14"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Apakah Anda menggunakan kontrasepsi suntik hormonal (1
+                  bulan/3 bulan) selama ≥ 3 tahun secara terus-menerus tanpa
+                  pernah berganti metode kontrasepsi?</label
+                >
+                <select class="form-control" required id="d14" name="d14">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Tidak menggunakan suntik hormonal/suntik < 3 tahun/pernah
+                    berganti metode
+                  </option>
+                  <option value="1">
+                    Menggunakan KB Suntik hormonal ≥ 3 tahun tanpa ganti metode
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 24 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="d24"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Apakah Anda menggunakan alat kontrasepsi dalam rahim (IUD)
+                  selama ≥ 5 tahun tanpa kontrol atau pergantian?</label
+                >
+                <select class="form-control" required id="d24" name="d24">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Menggunakan alat kontrasepsi dalam rahim (IUD) selama ≥ 5
+                    tahun tanpa kontrol atau pergantian.
+                  </option>
+                  <option value="1">
+                    Tidak menggunakan alat kontrasepsi dalam rahim (IUD)/
+                    menggunakan < 5 tahun dan Kontrol
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 25 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="d28"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Apakah Anda menggunakan kondom sebagai metode kontrasepsi
+                  yang juga berfungsi untuk mencegah penularan infeksi menular
+                  seksual dan HPV?</label
+                >
+                <select class="form-control" required id="d28" name="d28">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Menggunakan kondom secara konsisten sebagai kontrasepsi
+                  </option>
+                  <option value="1">Tidak menggunakan kondom</option>
+                </select>
+              </div>
+
+              <!-- SOAL 26 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="d29"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Berapa kali Anda mengkonsumsi makanan cepat saji dalam
+                  kehidupan sehari-hari?</label
+                >
+                <select class="form-control" required id="d29" name="d29">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Hampir tidak pernah/sama sekali tidak mengonsumsi
+                  </option>
+                  <option value="1">
+                    Konsumsi rutin/kadang-kadang (sekali sebulan atau lebih
+                    sering)
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 28 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="d93"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Apakah Anda pernah mengalami gejala infeksi seperti gatal
+                  atau keputihan abnormal (keputihan berwarna kuning keruh,
+                  hijau, gatal, berbau, bintil-bintil bernanah atau
+                  berdarah)?</label
+                >
+                <select class="form-control" required id="d93" name="d93">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Tidak pernah mengalami gatal atau keputihan abnormal (pada
+                    waktu kapan pun)
+                  </option>
+                  <option value="1">
+                    Pernah mengalami gatal atau keputihan abnormal (pada waktu
+                    kapan pun)
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 30 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="d95"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Apakah anda terpapar asap rokok oleh pasangan, keluarga,
+                  orang serumah, dan mereka merokok baik di rumah dan/atau di
+                  luar rumah?</label
+                >
+                <select class="form-control" required id="d95" name="d95">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Tidak terpapar dari siapa pun atau di mana pun
+                  </option>
+                  <option value="1">
+                    Terpapar asap rokok dari pasangan/keluarga/di rumah/luar
+                    rumah/tidak yakin
+                  </option>
+                </select>
+              </div>
+
+              <!-- SOAL 31 -->
+              <div class="mb-3 d-flex flex-column h-100">
+                <label
+                  for="d116"
+                  class="form-label flex-grow-1 d-flex align-items-center"
+                  >Berapa sering Anda terpapar asap rokok dalam kegiatan
+                  sehari-hari?</label
+                >
+                <select class="form-control" required id="d116" name="d116">
+                  <option value="">--Pilih Jawaban--</option>
+                  <option value="0">
+                    Tidak pernah menghirup/terpapar asap rokok dalam kegiatan
+                    sehari-hari.
+                  </option>
+                  <option value="1">
+                    Terpapar asap rokok dalam intensitas hampir setiap
+                    hari/beberapa kali seminggu/sekali sebulan atau tidak yakin
+                    akan frekuensi paparannya.
+                  </option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <button
+                  class="btn btn-primary w-100"
+                  id="submitButton"
+                  type="submit"
+                >
+                  Prediksi
                 </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Modal -->
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="prediksiModal"
+            tabindex="-1"
+            aria-labelledby="modalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLabel">Hasil Prediksi</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  {% if error %}
+                  <h3 class="text-danger">{{ error }}</h3>
+                  {% elif form_values %}
+                  <h3>
+                    Prediksi Risiko:
+                    <span class="text-danger">{{ prediction }}</span>
+                  </h3>
+                  {% else %}
+                  <p>Tidak ada input yang diterima.</p>
+                  {% endif %}
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Tutup
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!-- /Contact Section -->
-  </main>
+      </section>
+      <!-- /Contact Section -->
+    </main>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+    <!-- Preloader -->
+    <div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
-  <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/vendor/php-email-form/validate.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/vendor/aos/aos.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <!-- Vendor JS Files -->
+    <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
-  <!-- Main JS File -->
-  <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+    <!-- Main JS File -->
+    <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      {% if error or prediction %}
-      var modal = new bootstrap.Modal(document.getElementById("prediksiModal"));
-      modal.show();
-      {% endif %}
-    });
-  </script>
-</body>
-
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        {% if error or prediction %}
+        var modal = new bootstrap.Modal(document.getElementById("prediksiModal"));
+        modal.show();
+        {% endif %}
+      });
+    </script>
+  </body>
 </html>
